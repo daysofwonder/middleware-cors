@@ -17,7 +17,7 @@ use Bairwell\MiddlewareCors;
  *
  * @uses \Bairwell\MiddlewareCors\ValidateSettings
  */
-class ValidateSettingsTest extends \PHPUnit_Framework_TestCase
+class ValidateSettingsTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * The allowed settings.
@@ -29,7 +29,7 @@ class ValidateSettingsTest extends \PHPUnit_Framework_TestCase
     /**
      * Setup for PHPUnit.
      */
-    public function setUp()
+    public function setUp() : void
     {
         $this->allowedSettings = [
             'exposeHeaders'    => ['string', 'array', 'callable'],

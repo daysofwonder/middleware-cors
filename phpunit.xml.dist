@@ -7,7 +7,6 @@
          colors="true"
          verbose="true"
          beStrictAboutOutputDuringTests="true"
-         beStrictAboutTestSize="true"
          beStrictAboutTestsThatDoNotTestAnything="true"
          beStrictAboutTodoAnnotatedTests="true"
          beStrictAboutCoversAnnotation="true"
@@ -15,7 +14,7 @@
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         syntaxCheck="true">
+     >
     <php>
         <ini name="error_reporting" value="-1" />
         <ini name="intl.default_locale" value="en" />
@@ -27,21 +26,9 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
-        </whitelist>
-
-        <blacklist>
-            <directory suffix=".php">vendor</directory>
-            <directory suffix=".php">tests</directory>
-        </blacklist>
-    </filter>
-    <logging>
-        <log type="coverage-html" target="build/tests" title="Coverage report"
-             charset="UTF-8" yui="true" highlight="true"
-             showUncoveredFiles="true"
-             lowUpperBound="35" highLowerBound="70"/>
-    </logging>
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </coverage>
 </phpunit>

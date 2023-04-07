@@ -22,7 +22,7 @@ use Monolog\Logger;
  * @uses \Bairwell\MiddlewareCors\Preflight
  * @uses \Bairwell\MiddlewareCors\ValidateSettings
  */
-class ParseTest extends \PHPUnit_Framework_TestCase
+class ParseTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -333,7 +333,7 @@ class ParseTest extends \PHPUnit_Framework_TestCase
 
         $settingsProperty->setValue($sut, [$settingName => $settingValue, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$request]);
-        $this->assertInternalType('bool', $result);
+        $this->assertIsBool($result);
         $this->assertTrue($result);
 
         $settingValue = function () {
@@ -342,7 +342,7 @@ class ParseTest extends \PHPUnit_Framework_TestCase
 
         $settingsProperty->setValue($sut, [$settingName => $settingValue, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$request]);
-        $this->assertInternalType('bool', $result);
+        $this->assertIsBool($result);
         $this->assertFalse($result);
 
         // check failures
@@ -387,11 +387,11 @@ class ParseTest extends \PHPUnit_Framework_TestCase
         // good settings
         $settingsProperty->setValue($sut, [$settingName => true, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$request]);
-        $this->assertInternalType('bool', $result);
+        $this->assertIsBool($result);
         $this->assertTrue($result, 'Checking true');
         $settingsProperty->setValue($sut, [$settingName => false, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$request]);
-        $this->assertInternalType('bool', $result);
+        $this->assertIsBool($result);
         $this->assertFalse($result, 'Checking false');
         // check failures
         $values = ['abc', '123', '-1', -1];
@@ -434,7 +434,7 @@ class ParseTest extends \PHPUnit_Framework_TestCase
 
         $settingsProperty->setValue($sut, [$settingName => $settingValue, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$request]);
-        $this->assertInternalType('int', $result);
+        $this->assertIsInt($result);
         $this->assertSame(123, $result);
 
         $settingValue = function () {
@@ -443,7 +443,7 @@ class ParseTest extends \PHPUnit_Framework_TestCase
 
         $settingsProperty->setValue($sut, [$settingName => $settingValue, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$request]);
-        $this->assertInternalType('int', $result);
+        $this->assertIsInt($result);
         $this->assertSame(456, $result);
 
         // check failures
@@ -582,11 +582,11 @@ class ParseTest extends \PHPUnit_Framework_TestCase
         // good settings
         $settingsProperty->setValue($sut, [$settingName => 234, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$request]);
-        $this->assertInternalType('int', $result);
+        $this->assertIsInt($result);
         $this->assertSame(234, $result);
         $settingsProperty->setValue($sut, [$settingName => 456, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$request]);
-        $this->assertInternalType('int', $result);
+        $this->assertIsInt($result);
         $this->assertSame(456, $result);
         // check failures
         try {
@@ -640,7 +640,7 @@ class ParseTest extends \PHPUnit_Framework_TestCase
         $settingName = 'testItem';
         $settingsProperty->setValue($sut, [$settingName => $settingValue, 'def' => '567', 'ghi' => '911']);
         $result = $method->invokeArgs($sut, [$settingName, $request, $isSingle]);
-        $this->assertInternalType('string', $result);
+        $this->assertIsString($result);
         $this->assertSame($expectedResult, $result);
     }//end parseItem()
 }//end class

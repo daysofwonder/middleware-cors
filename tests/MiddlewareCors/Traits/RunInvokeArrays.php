@@ -61,7 +61,7 @@ trait RunInvokeArrays
      *
      * @throws \Exception In callback if there is a problem.
      */
-    public function setUp()
+    public function setUp() : void
     {
         $this->defaults        = [
             'origin'           => '*',

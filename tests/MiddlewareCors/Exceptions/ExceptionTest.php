@@ -16,7 +16,7 @@ namespace Bairwell\MiddlewareCors\Exceptions;
 /**
  * Class ExceptionsTest.
  */
-class ExceptionsTest extends \PHPUnit_Framework_TestCase
+class ExceptionTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -93,24 +93,24 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
      * @param ExceptionAbstract $sut The exception we are testing.
      */
     protected function basicChecks(ExceptionAbstract $sut) {
-        $this->assertInternalType('string',$sut->getSent());
-        $this->assertInternalType('array',$sut->getAllowed());
+        $this->assertIsString($sut->getSent());
+        $this->assertIsArray($sut->getAllowed());
         $this->assertEmpty($sut->getSent());
         $this->assertEmpty($sut->getAllowed());
         // now try setting the sent
         $this->assertSame($sut,$sut->setSent('test 123'));
-        $this->assertInternalType('string',$sut->getSent());
+        $this->assertIsString($sut->getSent());
         $this->assertEquals('test 123',$sut->getSent());
         // not try setting the allowed
         $this->assertSame($sut,$sut->setAllowed(['thing','goes','boom',123]));
-        $this->assertInternalType('array',$sut->getAllowed());
+        $this->assertIsArray($sut->getAllowed());
         $this->assertEquals(['thing','goes','boom',123],$sut->getAllowed());
         // ensure sent was not changed
-        $this->assertInternalType('string',$sut->getSent());
+        $this->assertIsString($sut->getSent());
         $this->assertEquals('test 123',$sut->getSent());
         // ensure allowed is not changed
         $this->assertSame($sut,$sut->setSent('jeff'));
-        $this->assertInternalType('array',$sut->getAllowed());
+        $this->assertIsArray($sut->getAllowed());
         $this->assertEquals(['thing','goes','boom',123],$sut->getAllowed());
     }
 }

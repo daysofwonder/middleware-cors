@@ -21,7 +21,7 @@ use Bairwell\MiddlewareCors\Exceptions\HeaderNotAllowed;
  * @uses \Bairwell\MiddlewareCors\ValidateSettings
  * @uses \Bairwell\MiddlewareCors\Exceptions\ExceptionAbstract
  */
-class PreflightTest extends \PHPUnit_Framework_TestCase
+class PreflightTest extends \PHPUnit\Framework\TestCase
 {
     use \Bairwell\MiddlewareCors\Traits\RunInvokeArrays;
 

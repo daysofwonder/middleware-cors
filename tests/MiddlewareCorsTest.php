@@ -25,7 +25,7 @@ use Bairwell\MiddlewareCors\Exceptions\BadOrigin;
  * @uses \Bairwell\MiddlewareCors\Preflight
  * @uses \Bairwell\MiddlewareCors\Exceptions\ExceptionAbstract
  */
-class MiddlewareCorsTest extends \PHPUnit_Framework_TestCase
+class MiddlewareCorsTest extends \PHPUnit\Framework\TestCase
 {
     use \Bairwell\MiddlewareCors\Traits\RunInvokeArrays;
 
